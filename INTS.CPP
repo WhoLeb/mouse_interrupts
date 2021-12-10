@@ -12,12 +12,12 @@ int main()
 {
 	clrscr();
 	oldvec = getvect(0x1c);
-	setvect(0x1c, mouse);
-	printf("*In a robotic voice* timer interrupt has been captured!\n");
-	while(1)
+	setvect(0x1c, timer);
+	printf("*In a robotic voice* tick interrupt has been captured!\n");
+	while(getch() != '1')
 	{
-		if(getch() - '0' == 1) break;
-		printf("%d\n", thing);
+		gotoxy(1, 2);
+		printf("%d", thing);
 	}
 	setvect(0x1c, oldvec);
 }
